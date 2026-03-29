@@ -53,7 +53,36 @@ def main():
                         help="Max total papers to ingest (default: 5)")
     parser.add_argument("--dry-run", action="store_true",
                         help="List papers without downloading or ingesting")
+    parser.add_argument("--smart", action="store_true",
+                        help="Use smart queries derived from AGENTS.md and MEMORY.md")
+    parser.add_argument("--queries", nargs="+",
+                        help="Custom search queries (overrides defaults)")
     args = parser.parse_args()
+
+    # Apply smart or custom queries to Semantic Scholar source
+    if args.smart or args.queries:
+        if args.smart:
+            sys.path.insert(0, str(SOURCES_DIR))
+            from smart_queries import generate_queries
+            queries = generate_queries(max_queries=5)
+            print("Smart queries from AGENTS.md + MEMORY.md:")
+            for i, q in enumerate(queries, 1):
+                print("  " + str(i) + ". " + q)
+            print()
+        else:
+            queries = args.queries
+            print("Custom queries: " + str(queries))
+            print()
+
+        # Set queries on semantic_scholar source if loaded
+        try:
+            spec = importlib.util.spec_from_file_location(
+                "semantic_scholar", str(SOURCES_DIR / "semantic_scholar.py"))
+            ss_mod = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(ss_mod)
+            ss_mod.set_queries(queries)
+        except Exception as e:
+            print("Warning: could not set smart queries on semantic_scholar: " + str(e))
 
     sources = load_sources()
     if not sources:
