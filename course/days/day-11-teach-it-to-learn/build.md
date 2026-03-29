@@ -35,23 +35,19 @@ SSH into your VPS and install the dependencies your Claw will need:
 ssh sri@sshub.dev
 ```
 
-```bash
-# Install ChromaDB and Docling
-pip install chromadb docling sentence-transformers
+The dependencies are installed via the Dockerfile at `/opt/openclaw/Dockerfile`. The RAG layer adds `python3-pip`, `libgl1` (needed by OpenCV/Docling for PDF rendering), ChromaDB, Docling, and sentence-transformers with CPU-only PyTorch.
 
-# Create the data directories
-mkdir -p ~/.openclaw/chromadb
-mkdir -p ~/.openclaw/workspace/skill-drafts
-mkdir -p ~/openclaw-reports
-mkdir -p ~/openclaw-ingestion/papers
+```bash
+# Create the data directories (on the persistent Docker volume)
+docker exec openclaw-gateway sh -c 'mkdir -p ~/.openclaw/chromadb ~/.openclaw/workspace/skill-drafts ~/openclaw-reports ~/openclaw-ingestion/papers'
 ```
 
 Verify the install:
 
 ```bash
-python3 -c "import chromadb; print('ChromaDB', chromadb.__version__)"
-python3 -c "from docling.document_converter import DocumentConverter; print('Docling OK')"
-python3 -c "from sentence_transformers import SentenceTransformer; print('Embeddings OK')"
+docker exec openclaw-gateway python3 -c "import chromadb; print('ChromaDB', chromadb.__version__)"
+docker exec openclaw-gateway python3 -c "from docling.document_converter import DocumentConverter; print('Docling OK')"
+docker exec openclaw-gateway python3 -c "from sentence_transformers import SentenceTransformer; print('Embeddings OK')"
 ```
 
 All three should print without errors. If your VPS runs low on memory during the sentence-transformers download, see Troubleshooting below.
