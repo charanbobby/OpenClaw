@@ -1,0 +1,6 @@
+# Secrets — never push credentials
+Secrets/
+.env
+
+# Google OAuth
+client_secret*.json
