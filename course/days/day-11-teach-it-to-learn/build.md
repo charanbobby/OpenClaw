@@ -62,7 +62,7 @@ All three should print without errors. If your VPS runs low on memory during the
 
 Copy and paste the following into the OpenClaw web chat:
 
-> Read `https://raw.githubusercontent.com/[YOUR-REPO]/openclaw/main/course/days/day-11-teach-it-to-learn/claw-instructions-setup-ingestion.md` and follow every step. Set up an arXiv ingestion pipeline that fetches AI research papers, parses them with Docling, chunks the text, embeds it, and stores it in ChromaDB. Do not configure any scheduled tasks — I will do that through the UI. Stop when the pipeline can process a single paper end to end.
+> Read `https://raw.githubusercontent.com/charanbobby/OpenClaw/master/course/days/day-11-teach-it-to-learn/claw-instructions-setup-ingestion.md` and follow every step. Set up an arXiv ingestion pipeline that fetches AI research papers, parses them with Docling, chunks the text, embeds it, and stores it in ChromaDB. Do not configure any scheduled tasks — I will do that through the UI. Stop when the pipeline can process a single paper end to end.
 
 Alternatively, if you have the course files on your VPS, paste the contents of [`claw-instructions-setup-ingestion.md`](./claw-instructions-setup-ingestion.md) directly into the chat.
 
@@ -89,7 +89,7 @@ The cron runs in an isolated session — it can only write to ChromaDB and the p
 
 Copy and paste the following into the web chat:
 
-> Read `https://raw.githubusercontent.com/[YOUR-REPO]/openclaw/main/course/days/day-11-teach-it-to-learn/claw-instructions-create-knowledge-search.md` and follow every step. Create a skill called `knowledge-search` that queries the ChromaDB knowledge base using hybrid search (semantic + keyword). The skill should return relevant chunks with source citations. Stop when the skill responds correctly to a test query.
+> Read `https://raw.githubusercontent.com/charanbobby/OpenClaw/master/course/days/day-11-teach-it-to-learn/claw-instructions-create-knowledge-search.md` and follow every step. Create a skill called `knowledge-search` that queries the ChromaDB knowledge base using hybrid search (semantic + keyword). The skill should return relevant chunks with source citations. Stop when the skill responds correctly to a test query.
 
 Alternatively, paste the contents of [`claw-instructions-create-knowledge-search.md`](./claw-instructions-create-knowledge-search.md) directly into the chat.
 
@@ -134,7 +134,7 @@ You are giving your Claw the ability to:
 
 Copy and paste the following into the web chat:
 
-> Read `https://raw.githubusercontent.com/[YOUR-REPO]/openclaw/main/course/days/day-11-teach-it-to-learn/claw-instructions-setup-improvement-loop.md` and follow every step. Configure a weekly synthesis task that reads the ChromaDB knowledge base, generates a Learning Report, and sends me a Telegram summary with proposed changes. No changes to any config file without my explicit approval. Stop when you've explained the full approval flow.
+> Read `https://raw.githubusercontent.com/charanbobby/OpenClaw/master/course/days/day-11-teach-it-to-learn/claw-instructions-setup-improvement-loop.md` and follow every step. Configure a weekly synthesis task that reads the ChromaDB knowledge base, generates a Learning Report, and sends me a Telegram summary with proposed changes. No changes to any config file without my explicit approval. Stop when you've explained the full approval flow.
 
 Alternatively, paste the contents of [`claw-instructions-setup-improvement-loop.md`](./claw-instructions-setup-improvement-loop.md) directly into the chat.
 
