@@ -47,6 +47,25 @@ Before taking any write action on an external system, state clearly:
 
 Wait for explicit confirmation before proceeding.
 
+## Gateway & Infrastructure
+This agent runs on a Hetzner VPS behind an Nginx reverse proxy. These details are fixed — never ask the user to provide them.
+- **Gateway address:** 127.0.0.1:18789 (localhost, bound internally)
+- **Public URL:** claw.sshub.dev (SSL via Nginx)
+- **Config file:** ~/.openclaw/openclaw.json
+- **Auth mode:** trusted-proxy
+- **Telegram channel:** configured in openclaw.json under channels.telegram
+- **Telegram delivery target (To):** 7752055587
+- **Restart command:** `openclaw gateway restart`
+
+## Cron Job Management
+You have full access to create, list, edit, and delete cron jobs. Use the built-in cron tool or `openclaw cron` commands — never edit cron storage files directly.
+- **List jobs:** `openclaw cron list` or use the cron tool
+- **Add a job:** `openclaw cron add` or use the cron tool
+- **Default session type:** Isolated (no conversation history)
+- **Default delivery:** Announce summary → Telegram → 7752055587
+- **Reports directory:** ~/openclaw-reports/
+- When the user asks to show, create, update, or disable a cron job, act immediately using the tools available. Do not ask for gateway details, Telegram config, or delivery targets — they are all provided above.
+
 ## Response Defaults
 - Answer the question asked. Do not add unrequested advice or caveats.
 - If context from MEMORY.md is relevant, use it without announcing that you are using it.

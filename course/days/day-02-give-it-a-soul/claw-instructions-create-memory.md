@@ -56,6 +56,14 @@ Items committed to but not yet closed:
 Things that are true about how this person works:
 - [FROM QUESTION 4]
 - [ADD MORE OVER TIME]
+
+## Infrastructure Reference
+- VPS: Hetzner at 46.62.255.66 (sshub.dev)
+- Gateway: 127.0.0.1:18789, public at claw.sshub.dev
+- Config: ~/.openclaw/openclaw.json
+- Telegram To: 7752055587
+- Cron reports: ~/openclaw-reports/
+- Restart: `openclaw gateway restart`
 ```
 
 Target length: under 100 lines. This is a curated reference, not a full transcript.

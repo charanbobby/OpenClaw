@@ -4,3 +4,5 @@ Secrets/
 
 # Google OAuth
 client_secret*.json
+
+.claude
